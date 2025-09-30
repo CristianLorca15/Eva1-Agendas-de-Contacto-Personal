@@ -2,9 +2,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Contacto
 from .forms import ContactoForm
 
+
 def lista_contactos(request):
-    contactos = Contacto.objects.all()
-    return render(request, 'AgendaPersonal/lista_contactos.html', {'contactos': contactos})
+    query = request.GET.get('q')
+    if query:
+        contactos = Contacto.objects.filter(nombre__icontains=query)
+    else:
+        contactos = Contacto.objects.all()
+    return render(request, 'AgendaPersonal/lista_contactos.html', {'contactos': contactos, 'query': query})
 
 def detalle_contacto(request, id):
     contacto = get_object_or_404(Contacto, id=id)
@@ -29,7 +34,7 @@ def editar_contacto(request, id):
             return redirect('lista_contactos')
     else:
         form = ContactoForm(instance=contacto)
-    return render(request, 'AgendaPersonal/editar_contacto.html', {'form': form})
+    return render(request, 'AgendaPersonal/editar_contacto.html', {'form': form, 'contacto': contacto})
 
 def eliminar_contacto(request, id):
     contacto = get_object_or_404(Contacto, id=id)
@@ -37,3 +42,12 @@ def eliminar_contacto(request, id):
         contacto.delete()
         return redirect('lista_contactos')
     return render(request, 'AgendaPersonal/eliminar_contacto.html', {'contacto': contacto})
+
+def info_perfil(request):
+    perfil = {
+        'nombre': 'Juan Pérez',
+        'correo': 'juan.perez@email.com',
+        'telefono': '123456789',
+        'direccion': 'Calle Falsa 123'
+    }
+    return render(request, 'AgendaPersonal/info_perfil.html', {'perfil': perfil})

@@ -1,0 +1,47 @@
+{% extends "AgendaPersonal/base.html" %}
+
+{% block title %}Lista de Contactos{% endblock %}
+
+{% block content %}
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6">Lista de Contactos</h1>
+    <form method="get" class="mb-4 flex">
+      <input type="text" name="q" placeholder="Buscar por nombre..." value="{{ query|default:'' }}" class="flex-1 px-4 py-2 border rounded-l">
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-r">Buscar</button>
+    </form>
+    {% if contactos %}
+      <div class="bg-white rounded-lg shadow p-6">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead>
+            <tr>
+              <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Nombre</th>
+              <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Teléfono</th>
+              <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Correo</th>
+              <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">Dirección</th>
+              <th class="px-4 py-2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for contacto in contactos %}
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">{{ contacto.nombre }}</td>
+                <td class="px-4 py-2">{{ contacto.telefono }}</td>
+                <td class="px-4 py-2">{{ contacto.correo }}</td>
+                <td class="px-4 py-2">{{ contacto.direccion }}</td>
+                <td class="px-4 py-2">
+                  <a href="{% url 'editar_contacto' contacto.id %}" class="text-blue-600 hover:underline mr-2">Editar</a>
+                  <a href="{% url 'eliminar_contacto' contacto.id %}" class="text-red-600 hover:underline">Eliminar</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="bg-yellow-100 text-yellow-800 p-4 rounded">No hay contactos.</div>
+    {% endif %}
+    <div class="mt-6">
+      <a href="{% url 'nuevo_contacto' %}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Agregar Contacto</a>
+    </div>
+  </div>
+{% endblock %}

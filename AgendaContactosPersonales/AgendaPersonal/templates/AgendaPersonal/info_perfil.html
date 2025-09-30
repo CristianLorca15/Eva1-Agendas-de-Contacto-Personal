@@ -1,0 +1,17 @@
+{% extends "AgendaPersonal/base.html" %}
+
+{% block title %}
+  Mi Perfil
+{% endblock %}
+
+{% block content %}
+  <div class="max-w-md mx-auto bg-white rounded-lg shadow p-6 mt-8">
+    <h2 class="text-2xl font-bold mb-4">Información Personal</h2>
+    <ul class="space-y-2">
+      <li><strong>Nombre:</strong> {{ perfil.nombre }}</li>
+      <li><strong>Correo:</strong> {{ perfil.correo }}</li>
+      <li><strong>Teléfono:</strong> {{ perfil.telefono }}</li>
+      <li><strong>Dirección:</strong> {{ perfil.direccion }}</li>
+    </ul>
+  </div>
+{% endblock %}
