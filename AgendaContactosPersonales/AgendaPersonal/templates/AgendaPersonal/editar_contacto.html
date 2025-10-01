@@ -5,56 +5,59 @@
 {% endblock %}
 
 {% block content %}
-  <div class="max-w-2xl mx-auto">
-    <div class="bg-white mb-4 p-6 rounded-lg border border-gray-200">
-      <h1 class="text-3xl font-bold text-gray-800 mb-6">Editar Contacto</h1>
-      <p class="text-sm text-gray-600">Completa el siguiente formulario para editar el contacto (los campos en rojo son obligatorios).</p>
+  <div class="max-w-3xl mx-auto">
+    <div class="bg-white mb-6 p-8 rounded-lg border border-gray-200 shadow">
+      <h1 class="text-4xl font-bold text-gray-800 mb-6">Editar Contacto</h1>
+      <p class="text-lg text-gray-600 mb-6">Completa el siguiente formulario para editar el contacto (los campos en rojo son obligatorios).</p>
+      <form method="post" class="space-y-8">
+        {% csrf_token %}
+
+        <!-- Campo Nombre -->
+        <div>
+          <label for="{{ form.nombre.id_for_label }}" class="block text-lg font-medium text-gray-700 mb-2">{{ form.nombre.label }}</label>
+          {{ form.nombre }}
+          {% if form.nombre.errors %}
+            <div class="mt-2 text-base text-red-600">{{ form.nombre.errors }}</div>
+          {% endif %}
+        </div>
+
+        <!-- Campo Teléfono -->
+        <div>
+          <label class="block text-lg font-medium text-gray-700 mb-2">Teléfono</label>
+          <div class="flex">
+            <input type="text" value="+569" disabled class="w-24 px-4 py-4 border rounded-l bg-gray-100 text-gray-500 text-lg">
+            {{ form.numero }}
+          </div>
+          {% if form.numero.errors %}
+            <div class="text-red-600 text-base mt-2">{{ form.numero.errors }}</div>
+          {% endif %}
+        </div>
+
+        <!-- Campo Correo -->
+        <div>
+          <label for="{{ form.correo.id_for_label }}" class="block text-lg font-medium text-gray-700 mb-2">{{ form.correo.label }}</label>
+          {{ form.correo }}
+          {% if form.correo.errors %}
+            <div class="mt-2 text-base text-red-600">{{ form.correo.errors }}</div>
+          {% endif %}
+        </div>
+
+        <!-- Campo Dirección -->
+        <div>
+          <label for="{{ form.direccion.id_for_label }}" class="block text-lg font-medium text-gray-700 mb-2">{{ form.direccion.label }}</label>
+          {{ form.direccion }}
+          {% if form.direccion.errors %}
+            <div class="mt-2 text-base text-red-600">{{ form.direccion.errors }}</div>
+          {% endif %}
+        </div>
+
+        <!-- Botones -->
+        <div class="flex items-center justify-end space-x-6 pt-8 border-t border-gray-200">
+          <a href="{% url 'lista_contactos' %}" class="hover:scale-105 transition-all ease-in inline-flex items-center px-8 py-4 border border-gray-300 text-lg font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition duration-200">Cancelar</a>
+          <button type="submit" class="hover:scale-105 transition-all ease-in inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">Guardar Cambios</button>
+        </div>
+      </form>
     </div>
-    <form method="post" class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
-      {% csrf_token %}
-
-      <!-- Campo Nombre -->
-      <div class="mb-6">
-        <label for="{{ form.nombre.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">{{ form.nombre.label }}</label>
-        {{ form.nombre }}
-        {% if form.nombre.errors %}
-          <div class="mt-2 text-sm text-red-600">{{ form.nombre.errors }}</div>
-        {% endif %}
-      </div>
-
-      <!-- Campo Teléfono -->
-      <div class="mb-6">
-        <label for="{{ form.telefono.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">{{ form.telefono.label }}</label>
-        {{ form.telefono }}
-        {% if form.telefono.errors %}
-          <div class="mt-2 text-sm text-red-600">{{ form.telefono.errors }}</div>
-        {% endif %}
-      </div>
-
-      <!-- Campo Correo -->
-      <div class="mb-6">
-        <label for="{{ form.correo.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">{{ form.correo.label }}</label>
-        {{ form.correo }}
-        {% if form.correo.errors %}
-          <div class="mt-2 text-sm text-red-600">{{ form.correo.errors }}</div>
-        {% endif %}
-      </div>
-
-      <!-- Campo Dirección -->
-      <div class="mb-6">
-        <label for="{{ form.direccion.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">{{ form.direccion.label }}</label>
-        {{ form.direccion }}
-        {% if form.direccion.errors %}
-          <div class="mt-2 text-sm text-red-600">{{ form.direccion.errors }}</div>
-        {% endif %}
-      </div>
-
-      <!-- Botones -->
-      <div class="flex items-center justify-end space-x-4 pt-6 border-t border-gray-200">
-        <a href="{% url 'lista_contactos' %}" class="hover:scale-105 transition-all ease-in inline-flex items-center px-6 py-3 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition duration-200">Cancelar</a>
-        <button type="submit" class="hover:scale-105 transition-all ease-in inline-flex items-center px-6 py-3 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">Guardar Cambios</button>
-      </div>
-    </form>
   </div>
 
   <style>

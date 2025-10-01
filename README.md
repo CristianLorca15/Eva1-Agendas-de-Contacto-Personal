@@ -67,4 +67,74 @@ Es una libreria para darle estilo a la pagina
 ######
 
 
+path("perfil/", views.info_perfil, name="info_perfil"), urls de perfil aun nose si la voy a hacer
+
+
+{% extends "AgendaPersonal/base.html" %}
+
+{% block title %}
+  Mi Perfil
+{% endblock %}
+
+{% block content %}
+  <div class="max-w-md mx-auto bg-white rounded-lg shadow p-6 mt-8">
+    <h2 class="text-2xl font-bold mb-4">Información Personal</h2>
+    <ul class="space-y-2">
+      <li><strong>Nombre:</strong> {{ perfil.nombre }}</li>
+      <li><strong>Correo:</strong> {{ perfil.correo }}</li>
+      <li><strong>Teléfono:</strong> {{ perfil.telefono }}</li>
+      <li><strong>Dirección:</strong> {{ perfil.direccion }}</li>
+    </ul>
+  </div>
+{% endblock %}
+
+html de perfil es una mierda
+
+
+def info_perfil(request):
+    perfil = {
+        'nombre': 'Juan Pérez',
+        'correo': 'juan.perez@email.com',
+        'telefono': '123456789',
+        'direccion': 'Calle Falsa 123'
+    }
+    return render(request, 'AgendaPersonal/info_perfil.html', {'perfil': perfil})
+
+funcion
+
+  <a href="{% url 'info_perfil' %}" class="hover:underline">Mi Información</a>
+
+  base html
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ````

@@ -1,19 +1,23 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Contacto
 from .forms import ContactoForm
+from django.db.models import Q
 
+
+def inicio(request):
+    return render(request, 'AgendaPersonal/inicio.html')
 
 def lista_contactos(request):
     query = request.GET.get('q')
     if query:
-        contactos = Contacto.objects.filter(nombre__icontains=query)
+        contactos = Contacto.objects.filter(
+        Q(nombre__icontains=query) | Q(correo__icontains=query)
+        )
     else:
         contactos = Contacto.objects.all()
     return render(request, 'AgendaPersonal/lista_contactos.html', {'contactos': contactos, 'query': query})
 
-def detalle_contacto(request, id):
-    contacto = get_object_or_404(Contacto, id=id)
-    return render(request, 'AgendaPersonal/detalle_contacto.html', {'contacto': contacto})
+
 
 def nuevo_contacto(request):
     if request.method == 'POST':
@@ -43,11 +47,3 @@ def eliminar_contacto(request, id):
         return redirect('lista_contactos')
     return render(request, 'AgendaPersonal/eliminar_contacto.html', {'contacto': contacto})
 
-def info_perfil(request):
-    perfil = {
-        'nombre': 'Juan Pérez',
-        'correo': 'juan.perez@email.com',
-        'telefono': '123456789',
-        'direccion': 'Calle Falsa 123'
-    }
-    return render(request, 'AgendaPersonal/info_perfil.html', {'perfil': perfil})
