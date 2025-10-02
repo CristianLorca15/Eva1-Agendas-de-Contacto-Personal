@@ -29,8 +29,14 @@
                 <td class="px-6 py-4">{{ contacto.correo }}</td>
                 <td class="px-6 py-4">{{ contacto.direccion }}</td>
                 <td class="px-6 py-4">
-                  <a href="{% url 'editar_contacto' contacto.id %}" class="text-blue-600 hover:underline mr-4 text-lg font-semibold">Editar</a>
-                  <a href="{% url 'eliminar_contacto' contacto.id %}" class="text-red-600 hover:underline text-lg font-semibold">Eliminar</a>
+                  <div class="flex items-center space-x-6">
+                    <a href="{% url 'editar_contacto' contacto.id %}" class="text-blue-600 hover:text-blue-800" title="Editar">
+                      <i class="fas fa-edit text-xl"></i>
+                    </a>
+                    <a href="{% url 'eliminar_contacto' contacto.id %}" class="text-red-600 hover:text-red-800" title="Eliminar">
+                      <i class="fas fa-trash-alt text-xl"></i>
+                    </a>
+                  </div>
                 </td>
               </tr>
             {% endfor %}

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -8,15 +9,29 @@
     </title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   </head>
   <body class="bg-gray-100 text-gray-800">
-    <nav class="bg-blue-600 p-6 text-white flex items-center justify-between text-xl">
-      <a href="{% url 'inicio' %}" class="font-bold text-2xl">AgendaPersonal</a>
+    <nav class="bg-blue-600 p-6 text-white flex items-center justify-between">
+      <!-- Logo grande y alineado -->
+      <a href="{% url 'inicio' %}" class="flex items-center space-x-3">
+        <img src="{% static 'img/Logo4F_1.png' %}" alt="Logo AgendaPersonal"
+             class="h-24 w-auto transition-transform duration-300 hover:scale-105">
+      </a>
+
+      <!-- Botones de navegación -->
       <div class="flex space-x-6">
-        <a href="{% url 'lista_contactos' %}" class="bg-white text-blue-600 px-6 py-3 rounded hover:bg-gray-100 font-semibold text-lg">Lista de Contactos</a>
-        <a href="{% url 'nuevo_contacto' %}" class="bg-green-500 text-white px-6 py-3 rounded hover:bg-green-600 font-semibold text-lg">Agregar Contacto</a>
+        <a href="{% url 'lista_contactos' %}" class="bg-white text-blue-600 px-6 py-3 rounded hover:bg-gray-100 font-semibold text-lg">
+          <i class="fas fa-address-book mr-2"></i> Lista de Contactos
+        </a>
+        <a href="{% url 'nuevo_contacto' %}" class="bg-green-500 text-white px-6 py-3 rounded hover:bg-green-600 font-semibold text-lg">
+          <i class="fas fa-user-plus mr-2"></i> Agregar Contacto
+        </a>
       </div>
     </nav>
+
+    <!-- Contenido principal -->
     <div class="container mx-auto p-4">
       {% block content %}
       <!-- Aquí va el contenido de cada página -->

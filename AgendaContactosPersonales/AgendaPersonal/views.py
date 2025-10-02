@@ -31,14 +31,19 @@ def nuevo_contacto(request):
 
 def editar_contacto(request, id):
     contacto = get_object_or_404(Contacto, id=id)
+    
     if request.method == 'POST':
         form = ContactoForm(request.POST, instance=contacto)
         if form.is_valid():
             form.save()
             return redirect('lista_contactos')
     else:
-        form = ContactoForm(instance=contacto)
+        # Extraemos los últimos 8 dígitos del teléfono para rellenar el campo 'numero'
+        numero_inicial = contacto.telefono[-8:] if contacto.telefono else ''
+        form = ContactoForm(instance=contacto, initial={'numero': numero_inicial})
+
     return render(request, 'AgendaPersonal/editar_contacto.html', {'form': form, 'contacto': contacto})
+
 
 def eliminar_contacto(request, id):
     contacto = get_object_or_404(Contacto, id=id)
