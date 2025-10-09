@@ -33,7 +33,7 @@ STATICFILES_DIRS = [
 
 
 ALLOWED_HOSTS = [
-    '.herokuapp.cpm'
+    '.herokuapp.com'
 ]
 
 
