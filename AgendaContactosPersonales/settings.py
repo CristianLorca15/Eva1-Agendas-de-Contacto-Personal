@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+#importar credenciales en PostgreSQL
+import os
+from dotenv import load_dotenv
+load_dotenv()
+########################
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +30,7 @@ SECRET_KEY = 'django-insecure-m-qp5%=t45f*=b7=l5j@j#^-w-!tf&(-h0vv%6s3#d%id(bd4n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     'static'
@@ -33,7 +38,8 @@ STATICFILES_DIRS = [
 
 
 ALLOWED_HOSTS = [
-    '.herokuapp.com'
+    '.herokuapp.com',
+    '127.0.0.1'
 ]
 
 
@@ -46,7 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'AgendaPersonal'
+    'AgendaPersonal',
+
 ]
 
 MIDDLEWARE = [
@@ -84,9 +91,13 @@ WSGI_APPLICATION = 'AgendaContactosPersonales.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("DBNAME"),
+        "USER": os.getenv("USER"),
+        "PASSWORD": os.getenv("PASSWORD"),
+        "HOST": os.getenv("HOST") ,
+        "PORT": os.getenv("PORT"),
     }
 }
 
