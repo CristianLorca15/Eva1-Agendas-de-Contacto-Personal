@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 #importar credenciales en PostgreSQL
-import os
 from dotenv import load_dotenv
+import os
 load_dotenv()
-########################
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +40,8 @@ STATICFILES_DIRS = [
 
 ALLOWED_HOSTS = [
     '.herokuapp.com',
-    '127.0.0.1'
+    
+    
 ]
 
 
@@ -52,7 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'AgendaPersonal',
+    'AgendaPersonal'
 
 ]
 
@@ -93,11 +95,11 @@ WSGI_APPLICATION = 'AgendaContactosPersonales.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DBNAME"),
-        "USER": os.getenv("USER"),
-        "PASSWORD": os.getenv("PASSWORD"),
-        "HOST": os.getenv("HOST") ,
-        "PORT": os.getenv("PORT"),
+        "NAME": os.getenv("dbname"),
+        "USER": os.getenv("user"),
+        "PASSWORD": os.getenv("password"),
+        "HOST": os.getenv("host") ,
+        "PORT": os.getenv("port"),
     }
 }
 
