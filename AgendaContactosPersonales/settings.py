@@ -40,6 +40,7 @@ STATICFILES_DIRS = [
 
 ALLOWED_HOSTS = [
     '.herokuapp.com',
+    '127.0.0.1'
     
     
 ]
@@ -95,13 +96,16 @@ WSGI_APPLICATION = 'AgendaContactosPersonales.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("dbname"),
-        "USER": os.getenv("user"),
-        "PASSWORD": os.getenv("password"),
-        "HOST": os.getenv("host") ,
-        "PORT": os.getenv("port"),
+        "NAME": os.getenv("SUPABASE_DB_NAME"),
+        "USER": os.getenv("SUPABASE_DB_USER"),
+        "PASSWORD": os.getenv("SUPABASE_DB_PASSWORD"),
+        "HOST": os.getenv("SUPABASE_HOST"),
+        "PORT": os.getenv("SUPABASE_PORT", "5432"),
     }
 }
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 
 # Password validation
