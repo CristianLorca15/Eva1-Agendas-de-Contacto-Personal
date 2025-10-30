@@ -32,24 +32,13 @@ SECRET_KEY = 'django-insecure-m-qp5%=t45f*=b7=l5j@j#^-w-!tf&(-h0vv%6s3#d%id(bd4n
 DEBUG = True
 
 
-# -------------------------
-# Static files configuration
-# -------------------------
-# IMPORTANT: STATIC_URL must end with a slash
 STATIC_URL = '/static/'
-
-# Where collectstatic will collect to (used by Heroku)
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# Where you keep your source static files in the repo (adjust to your structure)
-# Your project shows a top-level 'static' folder, so we point STATICFILES_DIRS there
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / 'static'
 ]
 
-# Use WhiteNoise storage (hashed filenames + compression) in production builds
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# -------------------------
+
 
 
 ALLOWED_HOSTS = [
@@ -75,7 +64,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # <<-- added so Heroku/Gunicorn serve static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -152,6 +140,16 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+
+
+
+import os
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'AgendaPersonal/static')]
 
 
 # Default primary key field type
