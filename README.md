@@ -1,4 +1,4 @@
-````
+
 utilizar la cmd no la powershell
 
 -----------------------------------------------------------------------------------------------------
@@ -62,10 +62,14 @@ Password:admin
 Password (again):admin
 
 tailwindcss (Flowbin)
-######
+##
 Es una libreria para darle estilo a la pagina
-######
+##
 
-4HEEbqqdCxyPuP20
+## Filtro para el admin
+Admin: búsqueda por nombre/email, exportación simple (action) a CSV.
 
-````
+
+
+
+
