@@ -35,7 +35,8 @@ DEBUG = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / 'static',                   # carpeta static global
+    BASE_DIR / 'AgendaPersonal/static',    # carpeta static dentro de tu app
 ]
 
 
@@ -147,9 +148,6 @@ USE_TZ = True
 
 
 
-
-import os
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'AgendaPersonal/static')]
 
 
 # Default primary key field type
