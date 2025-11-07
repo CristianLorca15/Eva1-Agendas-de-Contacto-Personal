@@ -71,5 +71,7 @@ Admin: búsqueda por nombre/email, exportación simple (action) a CSV.
 
 
 
+## Comando para instalar requirements
+pip install -r requirements.txt 
 
-
+C:

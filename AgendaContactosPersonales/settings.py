@@ -51,8 +51,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'AgendaPersonal'
+    'AgendaPersonal',
+    'rest_framework'
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -89,16 +95,24 @@ WSGI_APPLICATION = 'AgendaContactosPersonales.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+#DATABASES = {
+#    "default": {
+#        "ENGINE": "django.db.backends.postgresql",
+#        "NAME": os.getenv("SUPABASE_DB_NAME"),
+#        "USER": os.getenv("SUPABASE_DB_USER"),
+#        "PASSWORD": os.getenv("SUPABASE_DB_PASSWORD"),
+#        "HOST": os.getenv("SUPABASE_HOST"),
+#        "PORT": os.getenv("SUPABASE_PORT"),
+#    }
+#}
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("SUPABASE_DB_NAME"),
-        "USER": os.getenv("SUPABASE_DB_USER"),
-        "PASSWORD": os.getenv("SUPABASE_DB_PASSWORD"),
-        "HOST": os.getenv("SUPABASE_HOST"),
-        "PORT": os.getenv("SUPABASE_PORT"),
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "db.sqlite3",
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
