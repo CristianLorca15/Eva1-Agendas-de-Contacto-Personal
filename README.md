@@ -31,13 +31,11 @@ python manage.py makemigrations ## creea migraciones
 
 python manage.py migrate ## este las aplica las migraciones
 
-
 ##creamos la carpeta Models.py
 
 python manage.py makemigrations bienvenida
 
 python manage.py migrate bienvenida
-
 
 ## luego de esto creamos una tabla Producto con dos columnas: nombre y precio en el file de Models.
 
@@ -51,35 +49,67 @@ Base de datos DB Browser para manejar bases de datos ## sirve para hacer pruebas
  con el comando python manage.py startapp inventario
 
  creamos la carpeta forms.py dentro de inventario
-
-##comando para crear super admin
-python manage.py createsuperuser
- 
-
-Username (leave blank to use 'sistemas'): admin
-Email address: admin@admin.cl 
-Password:admin
-Password (again):admin
-
-tailwindcss (Flowbin)
-##
-Es una libreria para darle estilo a la pagina
-##
-
-## Filtro para el admin
-Admin: búsqueda por nombre/email, exportación simple (action) a CSV.
+```
 
 
+
+
+### COMANDOS
 
 ## Comando para instalar requirements
+```bash
 pip install -r requirements.txt 
+```
 
 ## comando anaconda
-
 ```bash
 C:\ProgramData\anaconda3\Scripts\activate.bat
 ```
 
+## ACTIVAR VENV
 ```bash
 venv\Scripts\activate
+-python -m venv venv
 ```
+
+## comando para crear super admin
+```bash
+python manage.py createsuperuser
+```
+
+## Creamos una nueva app inventario
+```bash
+python manage.py startapp inventario
+```
+
+## Comando para ver si hay migraciones
+```bash
+python manage.py makemigrations
+```
+
+## Comando para aplicar migraciones
+```bash
+python manage.py migrate
+```
+
+## Comando para lanzar el proyecto
+```bash
+python manage.py runserver
+```
+## instalamos Django
+```bash
+pip install django
+
+django-admin startproject bienvenida ## Creamos el proyecto con el nombre bienvenida
+
+cd bienvenida ## comando para cambiar a la ruta con la carpeta
+
+-python --version
+```
+
+## Creamos una nueva app inventario
+```bash
+python manage.py startapp inventario
+```
+
+ 
