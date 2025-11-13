@@ -8,7 +8,7 @@ router.register(r"groups", views.GroupViewSet)
 
 urlpatterns = [
     path("", views.inicio, name="inicio"),
-    path("", include(router.urls)),
+    path("api/", include(router.urls)),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("contactos/", views.lista_contactos, name="lista_contactos"),
     path("contacto/nuevo/", views.nuevo_contacto, name="nuevo_contacto"),

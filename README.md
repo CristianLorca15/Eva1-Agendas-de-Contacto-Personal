@@ -74,4 +74,12 @@ Admin: búsqueda por nombre/email, exportación simple (action) a CSV.
 ## Comando para instalar requirements
 pip install -r requirements.txt 
 
-C:
+## comando anaconda
+
+```bash
+C:\ProgramData\anaconda3\Scripts\activate.bat
+```
+
+```bash
+venv\Scripts\activate
+```
