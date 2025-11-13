@@ -74,7 +74,7 @@ venv\Scripts\activate
 
 ## comando para crear super admin
 ```bash
-python manage.py createsuperuser
+python manage.py createsuperuser ## admin admin
 ```
 
 ## Creamos una nueva app inventario
