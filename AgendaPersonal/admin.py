@@ -5,9 +5,9 @@ from datetime import datetime
 from .models import Contacto
 
 def export_contactos_csv(modeladmin, request, queryset):
-    # usamos modeladmin para obtener los campos y request para el nombre del archivo
+    
     meta = modeladmin.model._meta
-    # lista fija para mantener orden y sólo incluir los campos que quieres
+    
     field_names = ['id', 'nombre', 'correo', 'telefono', 'direccion']
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
