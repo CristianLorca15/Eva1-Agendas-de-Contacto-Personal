@@ -39,6 +39,12 @@ ALLOWED_HOSTS = [
     '127.0.0.1'
 ]
 
+# En que lados permito solicitudes HTTP
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:5500",
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True # Permitir todas las solicitudes CORS en desarrollo
 
 # Application definition
 
@@ -51,7 +57,8 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'AgendaPersonal',
-    'rest_framework'
+    'rest_framework',
+    "corsheaders",
 ]
 
 from datetime import timedelta
@@ -72,8 +79,9 @@ SIMPLE_JWT = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

@@ -57,6 +57,7 @@ Base de datos DB Browser para manejar bases de datos ## sirve para hacer pruebas
 ### COMANDOS
 
 ## Comando para instalar requirements
+
 ```bash
 pip install -r requirements.txt 
 ```
@@ -69,7 +70,7 @@ C:\ProgramData\anaconda3\Scripts\activate.bat
 ## ACTIVAR VENV
 ```bash
 venv\Scripts\activate
--python -m venv venv
+python -m venv venv
 ```
 
 ## comando para crear super admin
