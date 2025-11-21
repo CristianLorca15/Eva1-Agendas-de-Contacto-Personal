@@ -2,33 +2,28 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Contacto
 from .forms import ContactoForm
 from django.db.models import Q
-
-#API
 from django.contrib.auth.models import Group, User
 from rest_framework import permissions, viewsets
-from .serializers import GroupSerializer, UserSerializer
+from .serializers import GroupSerializer, UserSerializer, ContactoSerializer
+from django.contrib.auth.decorators import login_required
+
+
+class ContactoViewSet(viewsets.ModelViewSet):
+    queryset = Contacto.objects.all().order_by("nombre")
+    serializer_class = ContactoSerializer
+    permission_classes = [ permissions.IsAuthenticated ]
 
 # API
 class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-
     queryset = User.objects.all().order_by("-date_joined")
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 #API
 class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-
     queryset = Group.objects.all().order_by("name")
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
-
-
 
 
 # Vistas

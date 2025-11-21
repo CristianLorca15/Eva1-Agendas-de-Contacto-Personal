@@ -104,7 +104,7 @@ django-admin startproject bienvenida ## Creamos el proyecto con el nombre bienve
 
 cd bienvenida ## comando para cambiar a la ruta con la carpeta
 
--python --version
+python --version
 ```
 
 ## Creamos una nueva app inventario
